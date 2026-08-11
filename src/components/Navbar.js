@@ -1,28 +1,60 @@
+/**
+ * Main navigation bar.
+ */
 export function Navbar() {
     return `
-    <header class="navbar">
+        <header class="navbar">
 
-        <div class="container nav-container">
+            <div class="container nav-container">
 
-            <h2 class="logo">🚗 Smart Car Marketplace</h2>
+                <div class="logo">
+                    🚗 Smart Car Marketplace
+                </div>
 
-            <nav>
+                <nav>
+                    <ul>
 
-                <ul>
+                        <li>
+                            <a href="#home">
+                                Home
+                            </a>
+                        </li>
 
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Vehicles</a></li>
-                    <li><a href="#">Compare</a></li>
-                    <li><a href="#">Favorites</a></li>
-                    <li><a href="#">Cart <span id="cart-count">(0)</span></a></li>
-                    <li><a href="#">About</a></li>
+                        <li>
+                            <a href="#vehicles">
+                                Vehicles
+                            </a>
+                        </li>
 
-                </ul>
+                        <li>
+                            <a href="#compare">
+                                Compare
+                            </a>
+                        </li>
 
-            </nav>
+                        <li>
+                            <a href="#favorites">
+                                Favorites
+                            </a>
+                        </li>
 
-        </div>
+                        <li>
+                            <a href="#cart">
+                                Cart <span id="cart-count">(0)</span>
+                            </a>
+                        </li>
 
-    </header>
+                        <li>
+                            <a href="#about">
+                                About
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </header>
     `;
 }

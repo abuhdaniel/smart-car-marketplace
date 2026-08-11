@@ -1,144 +1,548 @@
-/* Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* ================================
+   GOOGLE FONT
+================================ */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+
+/* ================================
+   RESET
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-:root{
-    --primary:#0f172a;
-    --secondary:#2563eb;
-    --accent:#f59e0b;
-    --light:#f8fafc;
-    --dark:#1e293b;
-    --gray:#64748b;
+
+/* ================================
+   ROOT VARIABLES
+================================ */
+
+:root {
+    --primary: #0f172a;
+    --secondary: #2563eb;
+    --accent: #f59e0b;
+    --light: #f8fafc;
+    --dark: #1e293b;
+    --gray: #64748b;
+    --white: #ffffff;
+    --border: #e5e7eb;
 }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:var(--light);
-    color:var(--dark);
-    line-height:1.6;
+
+/* ================================
+   BODY
+================================ */
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
 }
 
-img{
-    max-width:100%;
-    display:block;
+
+/* ================================
+   GENERAL ELEMENTS
+================================ */
+
+img {
+    max-width: 100%;
+    display: block;
 }
 
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
 }
 
-section{
-    padding:70px 0;
+section {
+    padding: 70px 0;
 }
 
-h1,h2,h3{
-    margin-bottom:15px;
+h1,
+h2,
+h3 {
+    margin-bottom: 15px;
 }
 
-button{
-    cursor:pointer;
-    border:none;
-    border-radius:6px;
-    transition:.3s;
-}
-/* NAVBAR */
 
-.navbar{
+/* ================================
+   BUTTONS
+================================ */
 
-    background:var(--primary);
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
 
-    color:white;
-
-    padding:18px 0;
-
-    position:sticky;
-
-    top:0;
-
-    z-index:100;
-
+    /* Advanced CSS Feature #1:
+       Smooth transition */
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.nav-container{
+button:hover {
+    /* Advanced CSS Feature #2:
+       Transform */
+    transform: translateY(-2px);
 
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-.logo{
 
-    font-size:1.5rem;
+/* ================================
+   NAVIGATION
+================================ */
 
-    font-weight:700;
+.navbar {
+    background: var(--primary);
+    color: var(--white);
+    padding: 18px 0;
 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
-nav ul{
-
-    display:flex;
-
-    list-style:none;
-
-    gap:25px;
-
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav a{
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
 
-    color:white;
-
-    text-decoration:none;
-
-    font-weight:500;
-
+    transition:
+        transform 0.3s ease;
 }
 
-nav a:hover{
-
-    color:var(--accent);
-
-}
-.hero .btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:15px 35px;
-    background:#f59e0b;
-    color:#fff;
-    text-decoration:none;
-    border:none;
-    border-radius:8px;
-    font-weight:600;
-    font-size:16px;
-    cursor:pointer;
+.logo:hover {
+    /* Advanced CSS Feature #3:
+       Scale transform */
+    transform: scale(1.05);
 }
 
-.hero .btn:hover{
-    background:#d97706;
-}
-.cart-summary{
-    background:#ffffff;
-    padding:60px 0;
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
 }
 
-.cart-item{
-    display:flex;
-    justify-content:space-between;
-    padding:15px;
-    border-bottom:1px solid #ddd;
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
-.cart-summary h2:last-child{
-    margin-top:20px;
-    color:#2563eb;
+nav a:hover {
+    color: var(--accent);
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.hero {
+    min-height: 420px;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fafc 0%,
+            #e2e8f0 100%
+        );
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+
+    animation:
+        fadeInUp 0.8s ease-out;
+}
+
+.hero p {
+    max-width: 650px;
+
+    animation:
+        fadeInUp 1s ease-out;
+}
+
+
+/* ================================
+   HERO BUTTON
+================================ */
+
+.hero .btn {
+    display: inline-block;
+
+    margin-top: 20px;
+    padding: 15px 35px;
+
+    background: var(--accent);
+    color: var(--white);
+
+    text-decoration: none;
+
+    border: none;
+    border-radius: 8px;
+
+    font-weight: 600;
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.hero .btn:hover {
+    background: #d97706;
+
+    /* Advanced CSS Feature #4:
+       Transform + hover */
+    transform:
+        translateY(-5px)
+        scale(1.03);
+
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ================================
+   VEHICLE CARDS
+================================ */
+
+.vehicle-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(250px, 1fr)
+        );
+
+    gap: 25px;
+}
+
+.vehicle-card {
+    background: var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.vehicle-card:hover {
+    /* Advanced CSS Feature #5:
+       Card hover effect */
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ================================
+   CART
+================================ */
+
+.cart-summary {
+    background: var(--white);
+    padding: 60px 0;
+}
+
+.cart-item {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 15px;
+
+    border-bottom:
+        1px solid #ddd;
+
+    transition:
+        background-color 0.3s ease;
+}
+
+.cart-item:hover {
+    background-color:
+        #f1f5f9;
+}
+
+.cart-summary h2:last-child {
+    margin-top: 20px;
+    color: var(--secondary);
+}
+
+
+/* ================================
+   API VEHICLES
+================================ */
+
+.api-vehicles {
+    background: var(--white);
+}
+
+.api-controls {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 35px;
+}
+
+.api-controls label {
+    font-weight: 600;
+}
+
+.api-controls select,
+.api-controls button {
+    padding: 10px 14px;
+
+    border:
+        1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 1rem;
+}
+
+
+/* ================================
+   API BUTTON
+================================ */
+
+.api-controls button {
+    background: var(--primary);
+    color: var(--white);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.api-controls button:hover {
+    background: var(--secondary);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ================================
+   API MODEL GRID
+================================ */
+
+.api-model-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 20px;
+}
+
+
+/* ================================
+   API MODEL CARDS
+================================ */
+
+.api-model-card {
+    background:
+        var(--light);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.05);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.api-model-card:hover {
+    /* Advanced CSS Feature #6:
+       Multiple hover effects */
+    transform:
+        translateY(-6px)
+        scale(1.02);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.12);
+
+    border-color:
+        var(--secondary);
+}
+
+.api-model-card h3 {
+    margin-bottom: 12px;
+}
+
+
+/* ================================
+   FORM CONTROLS
+================================ */
+
+#vehicle-year,
+#vehicle-make {
+    color: #111827;
+
+    background-color:
+        var(--white);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#vehicle-year:focus,
+#vehicle-make:focus {
+    outline: none;
+
+    border-color:
+        var(--secondary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37, 99, 235, 0.2);
+}
+
+#vehicle-year option,
+#vehicle-make option {
+    color: #111827;
+    background-color: var(--white);
+}
+
+
+/* ================================
+   ANIMATION
+================================ */
+
+@keyframes fadeInUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ================================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 768px) {
+
+    .nav-container {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 15px;
+    }
+
+    .hero {
+        text-align: center;
+
+        padding: 50px 0;
+    }
+
+    .api-controls {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .api-controls select,
+    .api-controls button {
+        width: 100%;
+    }
+
+    .vehicle-grid,
+    .api-model-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .cart-item {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
+    }
 }

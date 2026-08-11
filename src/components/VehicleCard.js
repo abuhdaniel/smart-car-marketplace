@@ -1,58 +1,138 @@
 import { addToCart } from "../services/cartService";
+import {
+    addFavorite,
+    isFavorite
+} from "../services/favoriteService";
+
 
 export function VehicleCard(vehicle) {
-  return `
-    <div class="vehicle-card">
 
-      <img
-        src="${vehicle.image}"
-        alt="${vehicle.brand} ${vehicle.model}"
-      >
+    const favorite = isFavorite(vehicle.id);
 
-      <div class="vehicle-info">
+    return `
+        <article class="vehicle-card">
 
-        <h3>${vehicle.brand} ${vehicle.model}</h3>
+            <img
+                src="${vehicle.image}"
+                alt="${vehicle.brand} ${vehicle.model}"
+            >
 
-        <p><strong>Year:</strong> ${vehicle.year}</p>
+            <div class="vehicle-info">
 
-        <p><strong>Category:</strong> ${vehicle.category}</p>
+                <h3>
+                    ${vehicle.brand} ${vehicle.model}
+                </h3>
 
-        <h2>$${vehicle.price.toLocaleString()}</h2>
+                <p>
+                    <strong>Year:</strong>
+                    ${vehicle.year}
+                </p>
 
-        <div class="card-buttons">
-          <button
-            class="cart-btn"
-            data-id="${vehicle.id}">
-            🛒 Add to Cart
-          </button>
+                <p>
+                    <strong>Category:</strong>
+                    ${vehicle.category}
+                </p>
 
-          <button class="details-btn">
-            View Details
-          </button>
-        </div>
+                <h2>
+                    $${vehicle.price.toLocaleString()}
+                </h2>
 
-      </div>
+                <div class="card-buttons">
 
-    </div>
-  `;
+                    <button
+                        type="button"
+                        class="cart-btn"
+                        data-id="${vehicle.id}"
+                    >
+                        🛒 Add to Cart
+                    </button>
+
+                    <button
+                        type="button"
+                        class="favorite-btn"
+                        data-id="${vehicle.id}"
+                    >
+                        ${favorite ? "❤️ Favorited" : "♡ Add to Favorites"}
+                    </button>
+
+                    <button
+                        type="button"
+                        class="details-btn"
+                        data-id="${vehicle.id}"
+                    >
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+    `;
 }
 
+
+/**
+ * Attach cart and favorite events.
+ */
 export function attachCartEvents(vehicles) {
 
-  const buttons = document.querySelectorAll(".cart-btn");
+    /*
+     * ADD TO CART
+     */
+    const cartButtons =
+        document.querySelectorAll(".cart-btn");
 
-  buttons.forEach(button => {
+    cartButtons.forEach(button => {
 
-    button.addEventListener("click", () => {
+        button.addEventListener("click", () => {
 
-      const id = Number(button.dataset.id);
+            const id =
+                Number(button.dataset.id);
 
-      const vehicle = vehicles.find(v => v.id === id);
+            const vehicle =
+                vehicles.find(
+                    vehicle => vehicle.id === id
+                );
 
-      addToCart(vehicle);
+            if (vehicle) {
+                addToCart(vehicle);
+            }
+
+        });
 
     });
 
-  });
+
+    /*
+     * ADD TO FAVORITES
+     */
+    const favoriteButtons =
+        document.querySelectorAll(".favorite-btn");
+
+    favoriteButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const id =
+                Number(button.dataset.id);
+
+            const vehicle =
+                vehicles.find(
+                    vehicle => vehicle.id === id
+                );
+
+            if (vehicle) {
+
+                addFavorite(vehicle);
+
+                button.textContent =
+                    "❤️ Favorited";
+
+            }
+
+        });
+
+    });
 
 }
